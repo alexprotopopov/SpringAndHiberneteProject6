@@ -1,10 +1,19 @@
 package hiber.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
 public class User {
+
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +35,9 @@ public class User {
       this.lastName = lastName;
       this.email = email;
    }
-
+   @OneToOne
+   // @JoinColumn(name="id")
+   private  Car userCar;
    public Long getId() {
       return id;
    }
@@ -58,4 +69,5 @@ public class User {
    public void setEmail(String email) {
       this.email = email;
    }
+
 }
