@@ -14,14 +14,14 @@ import javax.persistence.Table;
 @Table
 public class Car {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private long id;
     @Column
     private String model;
     @Column
     private int series;
-    @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
+    @OneToOne//(fetch = FetchType.LAZY)
     private User carUser;
     public Car (){
     }
