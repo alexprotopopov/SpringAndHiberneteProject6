@@ -13,9 +13,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users")
 public class User {
-    @OneToOne
-    @MapsId
-    private Car userCar;
+
+@OneToOne
+@JoinColumn (name ="id")
+//@MapsId
+private Car userCar;
+
+    public void setUserCar(Car userCar) {
+        this.userCar = userCar;
+    }
+
+    public Car getUserCar() {
+        return userCar;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,8 +47,8 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        //Car userCar =new Car();
     }
-
 
 
     public Long getId() {

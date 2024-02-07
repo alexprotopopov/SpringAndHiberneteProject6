@@ -1,5 +1,6 @@
 package hiber.service;
 
+
 import hiber.dao.UserDao;
 import hiber.model.Car;
 import hiber.model.User;
@@ -24,12 +25,18 @@ public class UserServiceImp implements UserService {
 
     @Transactional
     @Override
-    public void add(Car car) { userDao.add(car); }
+    public void addCar(Car car) { userDao.addCar(car); }
+
 
     @Transactional(readOnly = true)
     @Override
     public List<User> listUsers() {
         return userDao.listUsers();
+
+    }
+    @Transactional
+    public void infoUser() {
+        userDao.infoUser();
     }
 
 }
