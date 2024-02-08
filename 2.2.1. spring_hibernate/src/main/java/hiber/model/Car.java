@@ -1,13 +1,11 @@
 package hiber.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,19 +14,31 @@ import javax.persistence.Table;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private long id;
+    private long id;
     @Column
     private String model;
     @Column
-    private int series;
-@OneToOne(mappedBy = "userCar")//(fetch = FetchType.LAZY)
-//    @MapsId
+    private String series;
+
+    public void setCarUser(User carUser) {
+        this.carUser = carUser;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public User getCarUser() {
+        return carUser;
+    }
+
+    @OneToOne(mappedBy = "userCar")
     private User carUser;
 
     public Car() {
     }
 
-    public Car(String model, int series) {
+    public Car(String model, String series) {
         this.model = model;
         this.series = series;
     }
@@ -37,7 +47,7 @@ public class Car {
         return model;
     }
 
-    public int getSeries() {
+    public String getSeries() {
         return series;
     }
 
@@ -45,7 +55,7 @@ public class Car {
         this.model = model;
     }
 
-    public void setSeries(int series) {
+    public void setSeries(String series) {
         this.series = series;
     }
 

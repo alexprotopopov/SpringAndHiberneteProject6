@@ -6,8 +6,12 @@ import hiber.model.User;
 import java.util.List;
 
 public interface UserDao {
-   void add(User user);
-   void addCar(Car car);
-   List<User> listUsers();
-//   public void infoUser();
+    void add(User user);
+
+    void addCar(Car car);
+
+    List<User> listUsers();
+
+    User infoUser(String model, String series);
+
 }

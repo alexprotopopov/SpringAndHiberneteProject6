@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -14,10 +13,18 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class User {
 
-@OneToOne
-@JoinColumn (name ="id")
+
+    @OneToOne
+    @JoinColumn(name = "id")
 //@MapsId
-private Car userCar;
+    private Car userCar;
+
+    @Override
+    public String toString() {
+        return "firstName = " + firstName +
+                ", lastName = " + lastName +
+                ", email = " + email;
+    }
 
     public void setUserCar(Car userCar) {
         this.userCar = userCar;
@@ -47,7 +54,7 @@ private Car userCar;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        //Car userCar =new Car();
+
     }
 
 
