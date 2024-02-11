@@ -12,28 +12,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users")
 public class User {
-
-
-    @OneToOne
-    @JoinColumn(name = "id")
-//@MapsId
-    private Car userCar;
-
-    @Override
-    public String toString() {
-        return "firstName = " + firstName +
-                ", lastName = " + lastName +
-                ", email = " + email;
-    }
-
-    public void setUserCar(Car userCar) {
-        this.userCar = userCar;
-    }
-
-    public Car getUserCar() {
-        return userCar;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -46,6 +24,9 @@ public class User {
 
     @Column(name = "email")
     private String email;
+    @OneToOne
+    @JoinColumn(name = "id")
+    private Car userCar;
 
     public User() {
     }
@@ -55,6 +36,14 @@ public class User {
         this.lastName = lastName;
         this.email = email;
 
+    }
+
+    public void setUserCar(Car userCar) {
+        this.userCar = userCar;
+    }
+
+    public Car getUserCar() {
+        return userCar;
     }
 
 
@@ -90,4 +79,8 @@ public class User {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return "firstName = " + firstName + ", lastName = " + lastName + ", email = " + email;
+    }
 }
